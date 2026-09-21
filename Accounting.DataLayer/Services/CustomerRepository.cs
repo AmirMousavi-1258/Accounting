@@ -117,5 +117,9 @@ namespace Accounting.DataLayer.Services
         {
             return db.dbo_Customers.First(c => c.FullName == name).CustomerID;
         }
+        public string GetCustomerNameByID(int id)
+        {
+            return db.dbo_Customers.Find(id).FullName;
+        }
     }
 }

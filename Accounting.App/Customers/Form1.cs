@@ -29,5 +29,19 @@ namespace Accounting.App
             frmNewTransaction frm = new frmNewTransaction();
             frm.ShowDialog();
         }
+
+        private void tsbBuys_Click(object sender, EventArgs e)
+        {
+            frmReport frm = new frmReport();
+            frm.TypeID = 2;
+            frm.ShowDialog();
+        }
+
+        private void tsbRecieves_Click(object sender, EventArgs e)
+        {
+            frmReport frm = new frmReport();
+            frm.TypeID = 1;
+            frm.ShowDialog();
+        }
     }
 }

@@ -151,6 +151,11 @@
             // nmtxtCatch
             // 
             this.nmtxtCatch.Location = new System.Drawing.Point(230, 89);
+            this.nmtxtCatch.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.nmtxtCatch.Name = "nmtxtCatch";
             this.nmtxtCatch.Size = new System.Drawing.Size(189, 23);
             this.nmtxtCatch.TabIndex = 7;
