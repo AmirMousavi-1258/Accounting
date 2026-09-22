@@ -16,7 +16,8 @@ namespace Accounting.App.Customers
 {
     public partial class frmNewTransaction : Form
     {
-        UnitOfWork db = new UnitOfWork();
+        UnitOfWork db;
+        public int AccountID = 0;
         public frmNewTransaction()
         {
             InitializeComponent();
@@ -24,8 +25,27 @@ namespace Accounting.App.Customers
 
         private void frmNewTransaction_Load(object sender, EventArgs e)
         {
+            db = new UnitOfWork();
             dgvCostumers.AutoGenerateColumns = false;
             dgvCostumers.DataSource = db.CustomerRepository.GetNames();
+            if (AccountID != 0)
+            {
+                var account = db.AccountingRepository.GetById(AccountID);
+                txtName.Text = db.CustomerRepository.GetCustomerNameByID(account.CostumerID);
+                txtDetails.Text = account.Description;
+                nmtxtCatch.Value = int.Parse(account.Amount.ToString());
+                if (account.TypeID == 1)
+                {
+                    rdRecieve.Checked = true;
+                }
+                else
+                {
+                    rdBuy.Checked = true;
+                }
+                this.Text = "ویرایش";
+                btnAdmit.Text = "ویرایش";
+            }
+            db.Dispose();
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -41,6 +61,8 @@ namespace Accounting.App.Customers
 
         private void btnAdmit_Click(object sender, EventArgs e)
         {
+
+            db = new UnitOfWork();
             if (string.IsNullOrEmpty(txtName.Text))
             {
                 MessageBox.Show("یکی از افراد را از درون لیست انتخاب کنید.", "احتیاط");
@@ -63,11 +85,21 @@ namespace Accounting.App.Customers
                     DateTime = DateTime.Now,
                     Description = txtDetails.Text,
                 };
+                if(AccountID == 0)
+                {
+
                 db.AccountingRepository.Insert(accounting);
-                db.Save();
+                }
+                else
+                {
+                    accounting.ID = AccountID;
+                    db.AccountingRepository.Update(accounting);
+                }
+                    db.Save();
                 DialogResult = DialogResult.OK;
 
             }
+            db.Dispose();
         }
     }
 }

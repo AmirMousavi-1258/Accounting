@@ -74,6 +74,7 @@
             this.toolStripButton3.Size = new System.Drawing.Size(59, 64);
             this.toolStripButton3.Text = "ویرایش";
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // tsbDelete
             // 
@@ -136,7 +137,7 @@
             // msForDate
             // 
             this.msForDate.Location = new System.Drawing.Point(134, 55);
-            this.msForDate.Mask = "00/00/0000";
+            this.msForDate.Mask = "0000/00/00";
             this.msForDate.Name = "msForDate";
             this.msForDate.Size = new System.Drawing.Size(100, 23);
             this.msForDate.TabIndex = 5;
@@ -145,11 +146,12 @@
             // msSinceDate
             // 
             this.msSinceDate.Location = new System.Drawing.Point(290, 55);
-            this.msSinceDate.Mask = "00/00/0000";
+            this.msSinceDate.Mask = "0000/00/00";
             this.msSinceDate.Name = "msSinceDate";
             this.msSinceDate.Size = new System.Drawing.Size(100, 23);
             this.msSinceDate.TabIndex = 4;
             this.msSinceDate.ValidatingType = typeof(System.DateTime);
+            this.msSinceDate.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.msSinceDate_MaskInputRejected);
             // 
             // label3
             // 
@@ -159,6 +161,7 @@
             this.label3.Size = new System.Drawing.Size(54, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "از تاریخ :";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -171,11 +174,13 @@
             // 
             // cboCustomer
             // 
+            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.Location = new System.Drawing.Point(446, 55);
             this.cboCustomer.Name = "cboCustomer";
             this.cboCustomer.Size = new System.Drawing.Size(117, 24);
             this.cboCustomer.TabIndex = 1;
+            this.cboCustomer.SelectedIndexChanged += new System.EventHandler(this.cboCustomer_SelectedIndexChanged);
             // 
             // label1
             // 
