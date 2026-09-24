@@ -28,16 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.BtnCustomers = new System.Windows.Forms.ToolStripButton();
             this.BtnNewAcounting = new System.Windows.Forms.ToolStripButton();
-            this.tsbRecieves = new System.Windows.Forms.ToolStripButton();
             this.tsbBuys = new System.Windows.Forms.ToolStripButton();
+            this.tsbRecieves = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblDate = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tsLoginData = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -54,6 +63,8 @@
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsLoginData});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -87,7 +98,7 @@
             // 
             // BtnNewAcounting
             // 
-            this.BtnNewAcounting.Image = global::Accounting.App.Properties.Resources._1370791030_credit_card;
+            this.BtnNewAcounting.Image = global::Accounting.App.Properties.Resources._1371476499_todo_list;
             this.BtnNewAcounting.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.BtnNewAcounting.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnNewAcounting.Name = "BtnNewAcounting";
@@ -95,17 +106,6 @@
             this.BtnNewAcounting.Text = "تراکنش جدید";
             this.BtnNewAcounting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnNewAcounting.Click += new System.EventHandler(this.BtnNewAcounting_Click);
-            // 
-            // tsbRecieves
-            // 
-            this.tsbRecieves.Image = global::Accounting.App.Properties.Resources.servicesCosts;
-            this.tsbRecieves.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbRecieves.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRecieves.Name = "tsbRecieves";
-            this.tsbRecieves.Size = new System.Drawing.Size(111, 64);
-            this.tsbRecieves.Text = "گزارش دریافتیها";
-            this.tsbRecieves.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbRecieves.Click += new System.EventHandler(this.tsbRecieves_Click);
             // 
             // tsbBuys
             // 
@@ -118,11 +118,71 @@
             this.tsbBuys.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbBuys.Click += new System.EventHandler(this.tsbBuys_Click);
             // 
+            // tsbRecieves
+            // 
+            this.tsbRecieves.Image = global::Accounting.App.Properties.Resources._1370791030_credit_card;
+            this.tsbRecieves.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRecieves.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRecieves.Name = "tsbRecieves";
+            this.tsbRecieves.Size = new System.Drawing.Size(111, 64);
+            this.tsbRecieves.Text = "گزارش دریافتیها";
+            this.tsbRecieves.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbRecieves.Click += new System.EventHandler(this.tsbRecieves_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblTime,
+            this.lblDate});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 527);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(782, 26);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblTime
+            // 
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(42, 20);
+            this.lblTime.Text = "Time";
+            // 
+            // lblDate
+            // 
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(41, 20);
+            this.lblDate.Text = "Date";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tsLoginData
+            // 
+            this.tsLoginData.Name = "tsLoginData";
+            this.tsLoginData.Size = new System.Drawing.Size(224, 26);
+            this.tsLoginData.Text = "اطلاعات شخصی";
+            this.tsLoginData.Click += new System.EventHandler(this.tsLoginData_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Accounting.App.Properties.Resources.Untitled_1;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 97);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(471, 399);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,10 +192,14 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "حسابداری شخصی من";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,6 +214,12 @@
         private System.Windows.Forms.ToolStripButton BtnNewAcounting;
         private System.Windows.Forms.ToolStripButton tsbBuys;
         private System.Windows.Forms.ToolStripButton tsbRecieves;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblTime;
+        private System.Windows.Forms.ToolStripStatusLabel lblDate;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem tsLoginData;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

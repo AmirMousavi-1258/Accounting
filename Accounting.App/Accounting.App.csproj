@@ -72,6 +72,12 @@
     <Compile Include="Customers\frmCustomers.Designer.cs">
       <DependentUpon>frmCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customers\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\frmNewTransaction.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\frmCustomers.resx">
       <DependentUpon>frmCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\frmNewTransaction.resx">
       <DependentUpon>frmNewTransaction.cs</DependentUpon>
@@ -227,6 +236,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Untitled-1.png" />
     <Content Include="WinValidator\New Text Document.txt" />
   </ItemGroup>
   <ItemGroup>

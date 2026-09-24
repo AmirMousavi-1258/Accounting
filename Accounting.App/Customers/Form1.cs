@@ -1,4 +1,5 @@
 ﻿using Accounting.App.Customers;
+using Accounting.utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace Accounting.App
 {
     public partial class Form1 : Form
     {
+        public int userID = 0;
         public Form1()
         {
             InitializeComponent();
@@ -42,6 +44,38 @@ namespace Accounting.App
             frmReport frm = new frmReport();
             frm.TypeID = 1;
             frm.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            lblDate.Text = (DateTime.Now).ToShamsi();
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            this.Hide();
+            frmLogin frmlg = new frmLogin();
+            if (frmlg.ShowDialog() == DialogResult.OK)
+            {
+                userID = frmlg.userID;
+            }
+            else
+            {
+                Application.Exit();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void tsLoginData_Click(object sender, EventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.userID = userID;
+            frm.isEdit = true;
+            this.Hide();
+            if (frm.ShowDialog() == DialogResult.OK) { Application.Restart(); }
+            else { }
+
         }
     }
 }

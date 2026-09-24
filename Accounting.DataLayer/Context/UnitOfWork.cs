@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using Accounting.DataLayer.Repositories;
@@ -27,15 +28,28 @@ namespace Accounting.DataLayer.Context
         }
 
         private GenericRepository<Accounting> _accountingRepository;
-        public GenericRepository<Accounting> AccountingRepository 
+        public GenericRepository<Accounting> AccountingRepository
         {
             get
             {
-                if(_accountingRepository == null)
+                if (_accountingRepository == null)
                 {
-                    _accountingRepository=new GenericRepository<Accounting>(db);
+                    _accountingRepository = new GenericRepository<Accounting>(db);
                 }
-                return _accountingRepository ;
+                return _accountingRepository;
+            }
+        }
+
+        private GenericRepository<Login> _login;
+        public GenericRepository<Login> Login
+        {
+            get
+            {
+                if (_login == null)
+                {
+                    _login = new GenericRepository<Login>(db);
+                }
+                return _login;
             }
         }
         public void Save()
