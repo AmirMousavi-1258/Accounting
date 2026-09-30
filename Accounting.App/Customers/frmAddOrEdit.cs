@@ -28,7 +28,7 @@ namespace Accounting.App.Customers
             if(ofd.ShowDialog() == DialogResult.OK)
             {
                 pcCustomer.ImageLocation = ofd.FileName;
-                MessageBox.Show(pcCustomer.ImageLocation);
+                //MessageBox.Show(pcCustomer.ImageLocation);
             }
         }
 

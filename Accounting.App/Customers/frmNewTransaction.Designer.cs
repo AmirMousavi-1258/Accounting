@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDetails = new System.Windows.Forms.TextBox();
             this.btnAdmit = new System.Windows.Forms.Button();
+            this.lblTranslate = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostumers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmtxtCatch)).BeginInit();
@@ -152,18 +153,21 @@
             // 
             this.nmtxtCatch.Location = new System.Drawing.Point(230, 89);
             this.nmtxtCatch.Maximum = new decimal(new int[] {
-            9999999,
+            999999999,
             0,
             0,
             0});
             this.nmtxtCatch.Name = "nmtxtCatch";
             this.nmtxtCatch.Size = new System.Drawing.Size(189, 23);
             this.nmtxtCatch.TabIndex = 7;
+            this.nmtxtCatch.ValueChanged += new System.EventHandler(this.nmtxtCatch_ValueChanged);
+            this.nmtxtCatch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmtxtCatch_KeyDown);
+            this.nmtxtCatch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.nmtxtCatch_KeyUp);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(425, 122);
+            this.label4.Location = new System.Drawing.Point(425, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 16);
             this.label4.TabIndex = 8;
@@ -171,10 +175,10 @@
             // 
             // txtDetails
             // 
-            this.txtDetails.Location = new System.Drawing.Point(230, 122);
+            this.txtDetails.Location = new System.Drawing.Point(230, 174);
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
-            this.txtDetails.Size = new System.Drawing.Size(189, 169);
+            this.txtDetails.Size = new System.Drawing.Size(189, 132);
             this.txtDetails.TabIndex = 9;
             // 
             // btnAdmit
@@ -187,12 +191,23 @@
             this.btnAdmit.UseVisualStyleBackColor = true;
             this.btnAdmit.Click += new System.EventHandler(this.btnAdmit_Click);
             // 
+            // lblTranslate
+            // 
+            this.lblTranslate.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTranslate.ForeColor = System.Drawing.Color.Maroon;
+            this.lblTranslate.Location = new System.Drawing.Point(230, 122);
+            this.lblTranslate.Name = "lblTranslate";
+            this.lblTranslate.Size = new System.Drawing.Size(189, 49);
+            this.lblTranslate.TabIndex = 11;
+            this.lblTranslate.Text = "0 تومن";
+            // 
             // frmNewTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(509, 353);
+            this.Controls.Add(this.lblTranslate);
             this.Controls.Add(this.btnAdmit);
             this.Controls.Add(this.txtDetails);
             this.Controls.Add(this.label4);
@@ -236,5 +251,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDetails;
         private System.Windows.Forms.Button btnAdmit;
+        private System.Windows.Forms.Label lblTranslate;
     }
 }

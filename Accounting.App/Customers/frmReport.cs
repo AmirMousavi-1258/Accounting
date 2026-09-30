@@ -89,7 +89,9 @@ namespace Accounting.App.Customers
                 foreach (var report in result)
                 {
                     string customerName = db.CustomerRepository.GetCustomerNameByID(report.CostumerID);
-                    dgvReports.Rows.Add(report.ID, customerName, report.Amount, report.DateTime.ToShamsi(),report.Description);
+                    DataGridViewRow row = new DataGridViewRow();
+                    
+                    dgvReports.Rows.Add(report.ID,customerName,report.Amount,report.DateTime,report.Description);
                 }
             }
         }

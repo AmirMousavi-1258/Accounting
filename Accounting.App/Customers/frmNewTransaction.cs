@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Accounting.DataLayer.Services;
 using Accounting.DataLayer.Repositories;
 using Accounting.DataLayer;
+using Accounting.utility;
 
 namespace Accounting.App.Customers
 {
@@ -72,7 +73,7 @@ namespace Accounting.App.Customers
             {
                 MessageBox.Show("یکی از حالت هارا انتخاب کنید", "احتیاط");
             }
-            else if (nmtxtCatch.Value == 0 || nmtxtCatch.Value > 9999999)
+            else if (nmtxtCatch.Value == 0 || nmtxtCatch.Value > 999999999)
             {
                 MessageBox.Show("مقدار باید بین 1 تا 9999999 باشد", "احتیاط");
             }
@@ -102,6 +103,22 @@ namespace Accounting.App.Customers
 
             }
             db.Dispose();
+        }
+
+        private void nmtxtCatch_ValueChanged(object sender, EventArgs e)
+        {
+            
+            lblTranslate.Text = Subtitle.CreateSub(decimal.ToInt32(nmtxtCatch.Value));
+        }
+
+        private void nmtxtCatch_KeyDown(object sender, KeyEventArgs e)
+        {
+            //lblTranslate.Text = Subtitle.CreateSub(decimal.ToInt32(nmtxtCatch.Value));
+        }
+
+        private void nmtxtCatch_KeyUp(object sender, KeyEventArgs e)
+        {
+            lblTranslate.Text = Subtitle.CreateSub(decimal.ToInt32(nmtxtCatch.Value));
         }
     }
 }

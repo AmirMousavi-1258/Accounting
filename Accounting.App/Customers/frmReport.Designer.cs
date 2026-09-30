@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
@@ -42,12 +43,12 @@
             this.cboCustomer = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvReports = new System.Windows.Forms.DataGridView();
-            this.stiReport1 = new Stimulsoft.Report.StiReport();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stiReport1 = new Stimulsoft.Report.StiReport();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).BeginInit();
@@ -199,6 +200,7 @@
             this.dgvReports.AllowUserToAddRows = false;
             this.dgvReports.AllowUserToDeleteRows = false;
             this.dgvReports.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReports.BackgroundColor = System.Drawing.Color.RosyBrown;
             this.dgvReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReports.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -206,6 +208,15 @@
             this.Column3,
             this.Column4,
             this.Column5});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReports.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvReports.GridColor = System.Drawing.Color.DarkOrange;
             this.dgvReports.Location = new System.Drawing.Point(12, 176);
             this.dgvReports.Name = "dgvReports";
             this.dgvReports.ReadOnly = true;
@@ -213,27 +224,6 @@
             this.dgvReports.RowTemplate.Height = 24;
             this.dgvReports.Size = new System.Drawing.Size(649, 265);
             this.dgvReports.TabIndex = 2;
-            // 
-            // stiReport1
-            // 
-            this.stiReport1.CookieContainer = null;
-            this.stiReport1.EngineVersion = Stimulsoft.Report.Engine.StiEngineVersion.EngineV2;
-            this.stiReport1.ReferencedAssemblies = new string[] {
-        "System.Dll",
-        "System.Drawing.Dll",
-        "System.Windows.Forms.Dll",
-        "System.Data.Dll",
-        "System.Xml.Dll",
-        "Stimulsoft.Controls.Dll",
-        "Stimulsoft.Base.Dll",
-        "Stimulsoft.Report.Dll"};
-            this.stiReport1.ReportAlias = "Report";
-            this.stiReport1.ReportGuid = "d4871a8be8244d19b68373559b7c4b97";
-            this.stiReport1.ReportName = "Report";
-            this.stiReport1.ReportSource = null;
-            this.stiReport1.ReportUnit = Stimulsoft.Report.StiReportUnitType.Inches;
-            this.stiReport1.ScriptLanguage = Stimulsoft.Report.StiReportLanguageType.CSharp;
-            this.stiReport1.UseProgressInThread = false;
             // 
             // Column1
             // 
@@ -275,6 +265,27 @@
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            // 
+            // stiReport1
+            // 
+            this.stiReport1.CookieContainer = null;
+            this.stiReport1.EngineVersion = Stimulsoft.Report.Engine.StiEngineVersion.EngineV2;
+            this.stiReport1.ReferencedAssemblies = new string[] {
+        "System.Dll",
+        "System.Drawing.Dll",
+        "System.Windows.Forms.Dll",
+        "System.Data.Dll",
+        "System.Xml.Dll",
+        "Stimulsoft.Controls.Dll",
+        "Stimulsoft.Base.Dll",
+        "Stimulsoft.Report.Dll"};
+            this.stiReport1.ReportAlias = "Report";
+            this.stiReport1.ReportGuid = "d4871a8be8244d19b68373559b7c4b97";
+            this.stiReport1.ReportName = "Report";
+            this.stiReport1.ReportSource = null;
+            this.stiReport1.ReportUnit = Stimulsoft.Report.StiReportUnitType.Inches;
+            this.stiReport1.ScriptLanguage = Stimulsoft.Report.StiReportLanguageType.CSharp;
+            this.stiReport1.UseProgressInThread = false;
             // 
             // frmReport
             // 
