@@ -20,8 +20,10 @@ namespace Accounting.DataLayer
         public int Amount { get; set; }
         public string Description { get; set; }
         public System.DateTime DateTime { get; set; }
+        public int LoginID { get; set; }
     
         public virtual AccountingType AccountingType { get; set; }
         public virtual dbo_Customers dbo_Customers { get; set; }
+        public virtual Login Login { get; set; }
     }
 }

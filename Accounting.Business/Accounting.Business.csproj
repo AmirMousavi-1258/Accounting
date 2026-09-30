@@ -41,7 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\ReportBalance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Accounting.DataLayer\Accounting.DataLayer.csproj">
+      <Project>{f97a7fbc-1bd1-457b-b6ae-1541f46cdcb6}</Project>
+      <Name>Accounting.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Accounting.ViewModels\Accounting.ViewModels.csproj">
+      <Project>{447e01c9-4566-4c0c-9ae4-93118aebae56}</Project>
+      <Name>Accounting.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

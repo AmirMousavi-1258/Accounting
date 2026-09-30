@@ -42,10 +42,12 @@
             this.cboCustomer = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvReports = new System.Windows.Forms.DataGridView();
+            this.stiReport1 = new Stimulsoft.Report.StiReport();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).BeginInit();
@@ -107,6 +109,7 @@
             this.tsbPrint.Size = new System.Drawing.Size(44, 64);
             this.tsbPrint.Text = "چاپ";
             this.tsbPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
             // groupBox1
             // 
@@ -201,7 +204,8 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4});
+            this.Column4,
+            this.Column5});
             this.dgvReports.Location = new System.Drawing.Point(12, 176);
             this.dgvReports.Name = "dgvReports";
             this.dgvReports.ReadOnly = true;
@@ -210,8 +214,30 @@
             this.dgvReports.Size = new System.Drawing.Size(649, 265);
             this.dgvReports.TabIndex = 2;
             // 
+            // stiReport1
+            // 
+            this.stiReport1.CookieContainer = null;
+            this.stiReport1.EngineVersion = Stimulsoft.Report.Engine.StiEngineVersion.EngineV2;
+            this.stiReport1.ReferencedAssemblies = new string[] {
+        "System.Dll",
+        "System.Drawing.Dll",
+        "System.Windows.Forms.Dll",
+        "System.Data.Dll",
+        "System.Xml.Dll",
+        "Stimulsoft.Controls.Dll",
+        "Stimulsoft.Base.Dll",
+        "Stimulsoft.Report.Dll"};
+            this.stiReport1.ReportAlias = "Report";
+            this.stiReport1.ReportGuid = "d4871a8be8244d19b68373559b7c4b97";
+            this.stiReport1.ReportName = "Report";
+            this.stiReport1.ReportSource = null;
+            this.stiReport1.ReportUnit = Stimulsoft.Report.StiReportUnitType.Inches;
+            this.stiReport1.ScriptLanguage = Stimulsoft.Report.StiReportLanguageType.CSharp;
+            this.stiReport1.UseProgressInThread = false;
+            // 
             // Column1
             // 
+            this.Column1.DataPropertyName = "CustomerID";
             this.Column1.HeaderText = "Column1";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -241,6 +267,14 @@
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Discription";
+            this.Column5.HeaderText = "جزییات";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // frmReport
             // 
@@ -282,9 +316,11 @@
         private System.Windows.Forms.MaskedTextBox msForDate;
         private System.Windows.Forms.MaskedTextBox msSinceDate;
         private System.Windows.Forms.DataGridView dgvReports;
+        private Stimulsoft.Report.StiReport stiReport1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

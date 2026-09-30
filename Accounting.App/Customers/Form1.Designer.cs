@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsLoginData = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.BtnCustomers = new System.Windows.Forms.ToolStripButton();
             this.BtnNewAcounting = new System.Windows.Forms.ToolStripButton();
@@ -41,12 +42,20 @@
             this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tsLoginData = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblBalanceAccount = new System.Windows.Forms.Label();
+            this.lblPay = new System.Windows.Forms.Label();
+            this.lblRecieve = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BtnRfrsh = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -71,6 +80,13 @@
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(78, 24);
             this.toolStripDropDownButton1.Text = "تنظیمات";
             // 
+            // tsLoginData
+            // 
+            this.tsLoginData.Name = "tsLoginData";
+            this.tsLoginData.Size = new System.Drawing.Size(195, 26);
+            this.tsLoginData.Text = "اطلاعات شخصی";
+            this.tsLoginData.Click += new System.EventHandler(this.tsLoginData_Click);
+            // 
             // toolStrip2
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -78,7 +94,8 @@
             this.BtnCustomers,
             this.BtnNewAcounting,
             this.tsbBuys,
-            this.tsbRecieves});
+            this.tsbRecieves,
+            this.BtnRfrsh});
             this.toolStrip2.Location = new System.Drawing.Point(0, 27);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(782, 67);
@@ -159,28 +176,99 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tsLoginData
-            // 
-            this.tsLoginData.Name = "tsLoginData";
-            this.tsLoginData.Size = new System.Drawing.Size(224, 26);
-            this.tsLoginData.Text = "اطلاعات شخصی";
-            this.tsLoginData.Click += new System.EventHandler(this.tsLoginData_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Accounting.App.Properties.Resources.Untitled_1;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 97);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 151);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(471, 399);
+            this.pictureBox1.Size = new System.Drawing.Size(424, 345);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblBalanceAccount);
+            this.groupBox1.Controls.Add(this.lblPay);
+            this.groupBox1.Controls.Add(this.lblRecieve);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(442, 151);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(310, 131);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "گزارش کلی";
+            // 
+            // lblBalanceAccount
+            // 
+            this.lblBalanceAccount.Location = new System.Drawing.Point(6, 97);
+            this.lblBalanceAccount.Name = "lblBalanceAccount";
+            this.lblBalanceAccount.Size = new System.Drawing.Size(199, 21);
+            this.lblBalanceAccount.TabIndex = 5;
+            this.lblBalanceAccount.Text = "0";
+            // 
+            // lblPay
+            // 
+            this.lblPay.Location = new System.Drawing.Point(6, 69);
+            this.lblPay.Name = "lblPay";
+            this.lblPay.Size = new System.Drawing.Size(199, 21);
+            this.lblPay.TabIndex = 4;
+            this.lblPay.Text = "0";
+            // 
+            // lblRecieve
+            // 
+            this.lblRecieve.Location = new System.Drawing.Point(6, 38);
+            this.lblRecieve.Name = "lblRecieve";
+            this.lblRecieve.Size = new System.Drawing.Size(199, 21);
+            this.lblRecieve.TabIndex = 3;
+            this.lblRecieve.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(211, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 21);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "مجموع :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(211, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 21);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "پرداخت ها :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(211, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "دریافت ها :";
+            // 
+            // BtnRfrsh
+            // 
+            this.BtnRfrsh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnRfrsh.Image = global::Accounting.App.Properties.Resources._1371476342_Refresh;
+            this.BtnRfrsh.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BtnRfrsh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnRfrsh.Name = "BtnRfrsh";
+            this.BtnRfrsh.Size = new System.Drawing.Size(44, 64);
+            this.BtnRfrsh.Text = "toolStripButton1";
+            this.BtnRfrsh.Click += new System.EventHandler(this.BtnRfrsh_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip2);
@@ -200,6 +288,8 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,6 +310,14 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem tsLoginData;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblBalanceAccount;
+        private System.Windows.Forms.Label lblPay;
+        private System.Windows.Forms.Label lblRecieve;
+        private System.Windows.Forms.ToolStripButton BtnRfrsh;
     }
 }
 

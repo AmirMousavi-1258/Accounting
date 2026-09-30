@@ -18,6 +18,7 @@ namespace Accounting.App.Customers
     {
         UnitOfWork db;
         public int AccountID = 0;
+        public int loginID;
         public frmNewTransaction()
         {
             InitializeComponent();
@@ -84,6 +85,7 @@ namespace Accounting.App.Customers
                     TypeID = (rdBuy.Checked ? 2 : 1),
                     DateTime = DateTime.Now,
                     Description = txtDetails.Text,
+                    LoginID = loginID
                 };
                 if(AccountID == 0)
                 {

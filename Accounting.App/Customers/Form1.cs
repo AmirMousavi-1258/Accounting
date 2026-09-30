@@ -1,5 +1,9 @@
 ﻿using Accounting.App.Customers;
+using Accounting.Business.Account;
+using Accounting.DataLayer;
+using Accounting.DataLayer.Context;
 using Accounting.utility;
+using Accounting.ViewModels.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,12 +33,14 @@ namespace Accounting.App
         private void BtnNewAcounting_Click(object sender, EventArgs e)
         {
             frmNewTransaction frm = new frmNewTransaction();
+            frm.loginID = userID;
             frm.ShowDialog();
         }
 
         private void tsbBuys_Click(object sender, EventArgs e)
         {
             frmReport frm = new frmReport();
+            frm.LoginID = userID;
             frm.TypeID = 2;
             frm.ShowDialog();
         }
@@ -42,6 +48,7 @@ namespace Accounting.App
         private void tsbRecieves_Click(object sender, EventArgs e)
         {
             frmReport frm = new frmReport();
+            frm.LoginID = userID;
             frm.TypeID = 1;
             frm.ShowDialog();
         }
@@ -55,6 +62,7 @@ namespace Accounting.App
             if (frmlg.ShowDialog() == DialogResult.OK)
             {
                 userID = frmlg.userID;
+                Balance();
             }
             else
             {
@@ -76,6 +84,19 @@ namespace Accounting.App
             if (frm.ShowDialog() == DialogResult.OK) { Application.Restart(); }
             else { }
 
+        }
+
+        public void Balance()
+        {
+            ReportViewModel RP = ReportBalance.ReportForMainForm(userID);
+            lblBalanceAccount.Text = RP.Total.ToString("#,0");
+            lblPay.Text = RP.Pay.ToString("#,0");
+            lblRecieve.Text = RP.Recieve.ToString("#,0");
+        }
+
+        private void BtnRfrsh_Click(object sender, EventArgs e)
+        {
+            Balance();
         }
     }
 }

@@ -15,6 +15,7 @@
           <Property Name="Amount" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="800" />
           <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="LoginID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AccountingTypes">
           <Key>
@@ -66,6 +67,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Accounting_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="Accounting">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Acounting_DBModelStoreContainer">
           <EntitySet Name="Accounting" EntityType="Self.Accounting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountingTypes" EntityType="Self.AccountingTypes" Schema="dbo" store:Type="Tables" />
@@ -77,6 +90,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Accounting_dbo_Customers" Association="Self.FK_Accounting_dbo_Customers">
             <End Role="dbo_Customers" EntitySet="dbo_Customers" />
+            <End Role="Accounting" EntitySet="Accounting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounting_Login" Association="Self.FK_Accounting_Login">
+            <End Role="Login" EntitySet="Login" />
             <End Role="Accounting" EntitySet="Accounting" />
           </AssociationSet>
         </EntityContainer>
@@ -109,6 +126,10 @@
             <End Role="Accounting" EntitySet="Accountings" />
           </AssociationSet>
           <EntitySet Name="Logins" EntityType="Acounting_DBModel.Login" />
+          <AssociationSet Name="FK_Accounting_Login" Association="Acounting_DBModel.FK_Accounting_Login">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="Accounting" EntitySet="Accountings" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Accounting">
           <Key>
@@ -122,6 +143,8 @@
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="AccountingType" Relationship="Acounting_DBModel.FK_Accounting_AccountingTypes" FromRole="Accounting" ToRole="AccountingType" />
           <NavigationProperty Name="dbo_Customers" Relationship="Acounting_DBModel.FK_Accounting_dbo_Customers" FromRole="Accounting" ToRole="dbo_Customers" />
+          <Property Name="LoginID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Login" Relationship="Acounting_DBModel.FK_Accounting_Login" FromRole="Accounting" ToRole="Login" />
         </EntityType>
         <EntityType Name="AccountingType">
           <Key>
@@ -162,7 +185,20 @@
           <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accountings" Relationship="Acounting_DBModel.FK_Accounting_Login" FromRole="Login" ToRole="Accounting" />
         </EntityType>
+        <Association Name="FK_Accounting_Login">
+          <End Type="Acounting_DBModel.Login" Role="Login" Multiplicity="1" />
+          <End Type="Acounting_DBModel.Accounting" Role="Accounting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="Accounting">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -184,6 +220,7 @@
           <EntitySetMapping Name="Accountings">
             <EntityTypeMapping TypeName="Acounting_DBModel.Accounting">
               <MappingFragment StoreEntitySet="Accounting">
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />

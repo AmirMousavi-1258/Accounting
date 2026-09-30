@@ -18,6 +18,7 @@ namespace Accounting.App.Customers
     public partial class frmReport : Form
     {
         public int TypeID = 0;
+        public int LoginID = 0;
         public frmReport()
         {
             InitializeComponent();
@@ -62,11 +63,11 @@ namespace Accounting.App.Customers
                 if ((int)cboCustomer.SelectedValue != 0)
                 {
                     int id = int.Parse(cboCustomer.SelectedValue.ToString());
-                    result.AddRange(db.AccountingRepository.get(a => a.TypeID == TypeID && a.CostumerID == id));
+                    result.AddRange(db.AccountingRepository.get(a => a.TypeID == TypeID && a.CostumerID == id&&a.LoginID == LoginID));
                 }
                 else
                 {
-                    result.AddRange(db.AccountingRepository.get(a => a.TypeID == TypeID));
+                    result.AddRange(db.AccountingRepository.get(a => a.TypeID == TypeID&&a.LoginID == LoginID));
                 }
                 if(msSinceDate.Text != "    /  /")
                 {
@@ -88,7 +89,7 @@ namespace Accounting.App.Customers
                 foreach (var report in result)
                 {
                     string customerName = db.CustomerRepository.GetCustomerNameByID(report.CostumerID);
-                    dgvReports.Rows.Add(report.ID, customerName, report.Amount, report.DateTime.ToShamsi());
+                    dgvReports.Rows.Add(report.ID, customerName, report.Amount, report.DateTime.ToShamsi(),report.Description);
                 }
             }
         }
@@ -143,6 +144,26 @@ namespace Accounting.App.Customers
         private void msSinceDate_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
+        }
+
+        private void tsbPrint_Click(object sender, EventArgs e)
+        {
+            DataTable dtPrint = new DataTable();
+            dtPrint.Columns.Add("Customer");
+            dtPrint.Columns.Add("Amount");
+            dtPrint.Columns.Add("Date");
+            dtPrint.Columns.Add("Discription");
+            foreach (DataGridViewRow itm in dgvReports.Rows)
+            {
+                dtPrint.Rows.Add(
+                    itm.Cells[1].Value.ToString(),
+                    itm.Cells[2].Value.ToString(),
+                    itm.Cells[3].Value.ToString(),
+                    itm.Cells[4].Value.ToString());
+            }
+            stiReport1.Load(Application.StartupPath + "/Report.mrt");
+            stiReport1.RegData("Dt",dtPrint);
+            stiReport1.Show();
         }
     }
 }

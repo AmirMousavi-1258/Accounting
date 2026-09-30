@@ -15,6 +15,7 @@ namespace Accounting.App.Customers
     public partial class frmLogin : Form
     {
         public bool isEdit = false;
+        public bool isRegister = false;
         public int userID = 0;
         public frmLogin()
         {
@@ -36,6 +37,21 @@ namespace Accounting.App.Customers
                     this.Close();
                 }
             }
+            else if (isRegister)
+            {
+                using(UnitOfWork db  = new UnitOfWork())
+                {
+                    Login login = new Login()
+                    {
+                        UserName = txtUserName.Text,
+                        Password = txtPassword.Text,
+                    };
+                    db.Login.Insert(login);
+                    db.Save();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
             else
             {
                 string username = txtUserName.Text;
@@ -48,10 +64,10 @@ namespace Accounting.App.Customers
                 {
                     using (UnitOfWork db = new UnitOfWork())
                     {
-                         userID= db.Login.get(u=>u.UserName == username&&u.Password == password).Select(u=>u.LoginID).FirstOrDefault();
+                        userID = db.Login.get(u => u.UserName == username && u.Password == password).Select(u => u.LoginID).FirstOrDefault();
                         if (db.Login.get(u => u.UserName == username && u.Password == password).Any())
                         {
-                            MessageBox.Show("ورود موفقیت آمیز بود.");
+                            MessageBox.Show($"ورود موفقیت آمیز بود,\nخوش آمدید {username}");
                             this.DialogResult = DialogResult.OK;
                             this.Close();
                         }
@@ -82,6 +98,28 @@ namespace Accounting.App.Customers
                     txtUserName.Text = user.UserName;
                     txtPassword.Text = user.Password;
                 }
+            }
+            if (isRegister)
+            {
+                this.Text = "ثبت نام ";
+                groupBox1.Text = "ثبت اطلاعات";
+                button2.Enabled = false;
+                button2.Visible = false;
+                button1.Text = "ثبت نام";
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmLogin frmcs = new frmLogin();
+            frmcs.isEdit = false;
+            frmcs.isRegister = true;
+            if (frmcs.ShowDialog() == DialogResult.OK)
+            {
+                this.DialogResult = DialogResult.OK;
+                userID = frmcs.userID;
+                Application.Restart();
             }
         }
     }
